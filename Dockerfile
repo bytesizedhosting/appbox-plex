@@ -12,15 +12,14 @@ COPY run /etc/service/plex/run
 
 RUN apt-get -q update && \
     apt-get install -qy curl wget ca-certificates procps dbus avahi-daemon && \
-    echo "deb  https://downloads.plex.tv/repo/deb/ public main" > /etc/apt/sources.list.d/plexmediaserver.list && \
-    wget -q https://downloads.plex.tv/plex-keys/PlexSign.key -O - | apt-key add - && \
-    apt-get -q update && \
-    apt-get install -qyo Dpkg::Options::='--force-confold' plexmediaserver && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* && \
     chmod +x /etc/service/plex/run && \
-    echo /config > /etc/container_environment/HOME
+    echo /config > /etc/container_environment/HOME && \
+    wget --quiet -O plex.deb https://downloads.plex.tv/plex-media-server/1.7.0.3840-45a6a85f4/plexmediaserver_1.7.0.3840-45a6a85f4_amd64.deb && \
+    dpkg -i plex.deb && \
+    rm plex.deb
 
 VOLUME /config
 VOLUME /data
