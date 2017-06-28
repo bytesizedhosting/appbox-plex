@@ -17,7 +17,7 @@ RUN apt-get -q update && \
     rm -rf /tmp/* && \
     chmod +x /etc/service/plex/run && \
     echo /config > /etc/container_environment/HOME && \
-    wget --quiet -O plex.deb https://downloads.plex.tv/plex-media-server/1.7.3.3937-70f781325/plexmediaserver_1.7.3.3937-70f781325_amd64.deb && \
+    wget --quiet -O plex.deb https://downloads.plex.tv/plex-media-server/1.7.4.4017-3886b5c85/plexmediaserver_1.7.4.4017-3886b5c85_amd64.deb && \
     dpkg -i plex.deb && \
     rm plex.deb
 
