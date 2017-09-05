@@ -14,3 +14,4 @@ Build:
     - docker build --pull -t bytesized/appbox-plex:latest -f Dockerfile .
     - docker push bytesized/appbox-plex:latest
     - rm -rf ~/.docker
+  retry: 1
